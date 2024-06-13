@@ -1,2 +1,68 @@
-node_modules
-node_modules
+# Node.js相關
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Next.js相關
+.next/
+out/
+
+# 環境變量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 日誌文件
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 作業系統文件
+.DS_Store
+Thumbs.db
+
+# 編輯器配置
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 服務器端渲染暫存文件
+.cache
+
+# 測試輸出
+coverage/
+
+# 文檔產生輸出
+docs/
+
+# Typescript cache
+*.tsbuildinfo
+
+# 其他臨時文件
+tmp/
+temp/
+
+# ESLint cache
+.eslintcache
+
+# Next.js自動生成的類型文件
+types/
+
+# Storybook
+.storybook-out/
+
+# Jest快照
+__snapshots__/
+
+# Binaries for npm's macOS development
+npm-darwin* 
+npm-linux* 
+npm-win*

@@ -121,9 +121,6 @@ const Home: NextPage = () => {
                 onChange={handleChange}
               />
             </Paragraph>
-
-
-
           </div>
           <Space>
             <Input placeholder="請輸入電話" value={mobile} onChange={handleMoblieChange} maxLength={maxLength} style={{ width: '140px' }} />
