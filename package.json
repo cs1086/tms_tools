@@ -1,0 +1,33 @@
+{
+  "name": "tms_tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "antd": "^5.18.0",
+    "axios": "^1.7.2",
+    "next": "latest",
+    "react": "latest",
+    "react-barcode": "^1.5.3",
+    "react-dom": "latest",
+    "react-jsbarcode": "^1.0.1",
+    "styled-components": "^6.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "babel-plugin-styled-components": "^2.1.4",
+    "typescript": "^5.4.5"
+  }
+}
