@@ -5,7 +5,7 @@ import CustomLayout from '../components/Layout';
 import CustomSpin from '../components/CustomSpin';
 import Barcode from 'react-barcode';
 import Head from 'next/head';
-import { Breadcrumb, Button, Flex, Input, Popover, QRCode, Segmented, Select, Space, Typography, Watermark } from 'antd';
+import { Breadcrumb, Button, Flex, Input, Popover, QRCode, Rate, Segmented, Select, Space, Typography, Watermark, message } from 'antd';
 import { HomeOutlined, QrcodeOutlined, RedoOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons';
 import Paragraph from 'antd/es/typography/Paragraph';
 
@@ -24,6 +24,9 @@ interface Data {
   nocontactPhoto: string;
   signPhoto: string;
   signVideo: string;
+  pickup: boolean;
+  score: number;
+  comment: string;
 }
 const centeredStyle: React.CSSProperties = {
   display: 'flex',
@@ -32,6 +35,7 @@ const centeredStyle: React.CSSProperties = {
   flex: 1,
 };
 const Home: NextPage = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [dataList, setDataList] = useState<Data[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [deliveryPlanId, setDeliveryPlanId] = useState("0");
@@ -65,9 +69,23 @@ const Home: NextPage = () => {
 
   const requestData = (event: any) => {
     setLoading(true);
-    axios.get<Data[]>(`http://192.168.0.118:3001/api/data/${server}/${mobile}`)
+    axios.post<Data[]>(`http://192.168.0.118:3001/api/data/barcode/${server}`, {
+      mobile: mobile,
+    })
       .then(response => {
         setDataList(response.data);
+        console.log("得到回應")
+        if (response.data) {
+          messageApi.open({
+            type: 'success',
+            content: 'success',
+          });
+        } else {
+          messageApi.open({
+            type: 'error',
+            content: 'fail',
+          });
+        }
         setLoading(false);
       })
       .catch(error => {
@@ -80,7 +98,7 @@ const Home: NextPage = () => {
     </div>
   );
   return (<CustomLayout>
-
+    {contextHolder}
     {
       loading ? <CustomSpin /> : <div style={{ textAlign: 'center' }}>
 
@@ -133,11 +151,14 @@ const Home: NextPage = () => {
           <div style={{ textAlign: 'center' }}>
             <Watermark content="TMS">
               {dataList?.map(item => (
-                <div style={{ height: '700px', border: "1px solid black", borderCollapse: "collapse", padding: "10px" }}>
+                <div style={{ height: '700px', border: "1px solid black", borderCollapse: "collapse", padding: "10px", background: item.pickup ? "#ECF5FF" : "#ECECFF" }}>
                   <Flex align="center" justify="space-around">
                     <Space direction="vertical" align="start">
                       <span style={{ fontSize: '20px' }}>deliveryPlanId：<span style={{ color: "red" }}>{item.deliveryPlanId}</span></span>
                       <span style={{ fontSize: '20px' }}>deliveryId：<span style={{ color: "red" }}>{item.deliveryId}({statusList[item.packageStatusId]})</span></span>
+                      <span style={{ fontSize: '20px' }}>saleOrderId：<span style={{ color: "red" }}>{item.salesOrderId}</span></span>
+                      <span style={{ fontSize: '20px' }}>pickup：<span style={{ color: "red" }}>{item.pickup ? "是" : "否"}</span></span>
+                      <span style={{ fontSize: '20px' }}>評價：<span style={{ color: "red" }}><Rate value={item.score} disabled /></span></span>
                     </Space>
                     <div style={{ margin: '20px' }}>
                       {item.clientBarCodeTypeId != 2 ? <Barcode value={item.enableClientData ? item.description : item.sid} /> :

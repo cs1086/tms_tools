@@ -8,6 +8,9 @@ import {
   QrcodeOutlined,
   ToolOutlined,
   SettingOutlined,
+  EditOutlined,
+  SignatureOutlined,
+  RedoOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import Button from './Button';
@@ -66,26 +69,17 @@ const CustomLayout: React.FC<LayoutProps> = ({ children }) => {
             <Menu.Item key="1" icon={<QrcodeOutlined />}>
               <Link href="/">訂單條碼</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<ToolOutlined />}>
-              <Link href="/tools">建立訂單</Link>
+            <Menu.Item key="2" icon={<EditOutlined />}>
+              <Link href="/tools">安排訂單</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<ToolOutlined />}>
-              <Link href="/tools">重置行程</Link>
+            <Menu.Item key="3" icon={<RedoOutlined />}>
+              <Link href="/reset_itinerary">重置訂單初始推播</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<ToolOutlined />}>
+            <Menu.Item key="4" icon={<SignatureOutlined />}>
               <Link href="/tools">重置簽名</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<ToolOutlined />}>
-              <Link href="/tools">重置評分</Link>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<ToolOutlined />}>
-              <Link href="/tools">查詢GPS</Link>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<ToolOutlined />}>
-              <Link href="/tools">重算全部訂單</Link>
-            </Menu.Item>
-            <Menu.Item key="3" icon={<SettingOutlined />}>
-              <Link href="/setting">設定</Link>
+            <Menu.Item key="5" icon={<SettingOutlined />}>
+              <Link href="/tools">系統設定</Link>
             </Menu.Item>
           </Menu>
         </Sider>
