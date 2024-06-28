@@ -70,7 +70,7 @@ const Tools: React.FC = () => {
             onSelect={onSelect}
             onChange={onSelect}
             //onSearch={(text) => setOptions(getPanelValue(text))}
-            placeholder="input here"
+            placeholder="司機uid"
           />
           {/* <Input placeholder="司機uid" value={driverUid} onChange={(event) => {
           setDriverUid(event.target.value)
