@@ -69,15 +69,15 @@ const CustomLayout: React.FC<LayoutProps> = ({ children }) => {
             <Menu.Item key="1" icon={<QrcodeOutlined />}>
               <Link href="/">訂單條碼</Link>
             </Menu.Item>
-            {/* <Menu.Item key="2" icon={<EditOutlined />}>
-              <Link href="/tools">安排訂單</Link>
-            </Menu.Item> */}
+            <Menu.Item key="2" icon={<EditOutlined />}>
+              <Link href="/arrange_order">安排訂單</Link>
+            </Menu.Item>
             <Menu.Item key="3" icon={<RedoOutlined />}>
               <Link href="/reset_itinerary">重置訂單初始推播</Link>
             </Menu.Item>
-            {/* <Menu.Item key="4" icon={<SignatureOutlined />}>
-              <Link href="/tools">重置簽名</Link>
-            </Menu.Item> */}
+            <Menu.Item key="4" icon={<SignatureOutlined />}>
+              <Link href="/reset_signature">重置簽名</Link>
+            </Menu.Item>
             <Menu.Item key="5" icon={<SettingOutlined />}>
               <Link href="/tools">系統設定</Link>
             </Menu.Item>
